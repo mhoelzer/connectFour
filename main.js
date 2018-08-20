@@ -29,6 +29,16 @@ const handleClick = function(event) {
     playerSelections.push(parseInt(cell.id));
     // swap players
     currentPlayer = nextPlayer;
+    // check if bottom cell is blank
+    // if yes, add to bottom
+    // if no, add above highest cell
+    // if no but has 6, return error
+    if(cell.length === 0) {
+        if(column.length === 0) {
+            cell.appendChild(chip);
+        }
+        alert("he")
+    }
 };
 // get array of all cells using doc.querySelectorAll()
 // if want to use tictactoe, do td instead of div.rows
