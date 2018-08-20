@@ -1,0 +1,43 @@
+#grid {
+    display: flex;
+    justify-content: center;
+}
+.columns, .rows {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+}
+.rows {
+    width: 100px;
+    height: 100px;
+    border: 2px solid green;
+}
+
+
+table {
+    display: flex;
+    justify-content: center;
+}
+td {
+    /* align-items: center; */
+    border: 2px solid lime;
+    width: 100px;
+    height: 100px;
+}
+td:hover {
+    background: orange;
+}
+
+
+/* #flexbox {
+    display: flex;
+    justify-content: center;
+}
+.columnsFlex {
+    height: 80px;
+    width: 80px;
+    margin: 15px;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+} */

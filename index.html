@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="style.css">
+        <title>Connect Four</title>
+    </head>
+    <body>
+        <h1>Connect Four</h1>
+        <div id="grid">
+            <div class="columns" id="column1">
+                <div class="rows" id="row1"></div>
+                <div class="rows" id="row2"></div>
+                <div class="rows" id="row3"></div>
+                <div class="rows" id="row4"></div>
+                <div class="rows" id="row5"></div>
+                <div class="rows" id="row6"></div>
+            </div>
+            <div class="columns" id="column2">
+                <div class="rows" id="row7"></div>
+                <div class="rows" id="row8"></div>
+                <div class="rows" id="row9"></div>
+                <div class="rows" id="row10"></div>
+                <div class="rows" id="row11"></div>
+                <div class="rows" id="row12"></div>
+            </div>
+            <div class="columns" id="column3">
+                <div class="rows" id="row13"></div>
+                <div class="rows" id="row14"></div>
+                <div class="rows" id="row15"></div>
+                <div class="rows" id="row16"></div>
+                <div class="rows" id="row17"></div>
+                <div class="rows" id="row18"></div>
+            </div>
+            <div class="columns" id="column4">
+                <div class="rows" id="row19"></div>
+                <div class="rows" id="row20"></div>
+                <div class="rows" id="row21"></div>
+                <div class="rows" id="row22"></div>
+                <div class="rows" id="row23"></div>
+                <div class="rows" id="row24"></div>
+            </div>
+            <div class="columns" id="column5">
+                <div class="rows" id="row25"></div>
+                <div class="rows" id="row26"></div>
+                <div class="rows" id="row27"></div>
+                <div class="rows" id="row28"></div>
+                <div class="rows" id="row29"></div>
+                <div class="rows" id="row30"></div>
+            </div>
+            <div class="columns" id="column6">
+                <div class="rows" id="row31"></div>
+                <div class="rows" id="row32"></div>
+                <div class="rows" id="row33"></div>
+                <div class="rows" id="row34"></div>
+                <div class="rows" id="row35"></div>
+                <div class="rows" id="row36"></div>
+            </div>
+            <div class="columns" id="column7">
+                <div class="rows" id="row37"></div>
+                <div class="rows" id="row38"></div>
+                <div class="rows" id="row39"></div>
+                <div class="rows" id="row40"></div>
+                <div class="rows" id="row41"></div>
+                <div class="rows" id="row42"></div>
+            </div>
+        </div>
+
+        <table>
+            <tr>
+                <td id="1"></td>
+                <td id="2"></td>
+                <td id="3"></td>
+                <td id="4"></td>
+                <td id="5"></td>
+                <td id="6"></td>
+            </tr>
+            <tr>
+                <td id="7"></td>
+                <td id="8"></td>
+                <td id="9"></td>
+                <td id="10"></td>
+                <td id="11"></td>
+                <td id="12"></td>
+            </tr>
+            <tr>
+                <td id="13"></td>
+                <td id="14"></td>
+                <td id="15"></td>
+                <td id="16"></td>
+                <td id="17"></td>
+                <td id="18"></td>
+            </tr>
+            <tr>
+                <td id="19"></td>
+                <td id="20"></td>
+                <td id="21"></td>
+                <td id="22"></td>
+                <td id="23"></td>
+                <td id="24"></td>
+            </tr>
+            <tr>
+                <td id="25"></td>
+                <td id="26"></td>
+                <td id="27"></td>
+                <td id="28"></td>
+                <td id="29"></td>
+                <td id="30"></td>
+            </tr>
+            <tr>
+                <td id="31"></td>
+                <td id="32"></td>
+                <td id="33"></td>
+                <td id="34"></td>
+                <td id="35"></td>
+                <td id="36"></td>
+            </tr>
+            <tr>
+                <td id="37"></td>
+                <td id="38"></td>
+                <td id="39"></td>
+                <td id="40"></td>
+                <td id="41"></td>
+                <td id="42"></td>
+            </tr>
+        </table>
+        
+        <!-- <div id="flexbox">
+            <div class="columnsFlex" id="column1">
+                <div class="rows" id="row1"></div>
+                <div class="rows" id="row2"></div>
+                <div class="rows" id="row3"></div>
+                <div class="rows" id="row4"></div>
+                <div class="rows" id="row5"></div>
+                <div class="rows" id="row6"></div>
+            </div>
+            <div class="columnsFlex" id="column2">
+                <div class="rows" id="row7"></div>
+                <div class="rows" id="row8"></div>
+                <div class="rows" id="row9"></div>
+                <div class="rows" id="row10"></div>
+                <div class="rows" id="row11"></div>
+                <div class="rows" id="row12"></div>
+            </div>
+            <div class="columnsFlex" id="column3">
+                <div class="rows" id="row13"></div>
+                <div class="rows" id="row14"></div>
+                <div class="rows" id="row15"></div>
+                <div class="rows" id="row16"></div>
+                <div class="rows" id="row17"></div>
+                <div class="rows" id="row18"></div>
+            </div>
+            <div class="columnsFlex" id="column4">
+                <div class="rows" id="row19"></div>
+                <div class="rows" id="row20"></div>
+                <div class="rows" id="row21"></div>
+                <div class="rows" id="row22"></div>
+                <div class="rows" id="row23"></div>
+                <div class="rows" id="row24"></div>
+            </div>
+            <div class="columnsFlex" id="column5">
+                <div class="rows" id="row25"></div>
+                <div class="rows" id="row26"></div>
+                <div class="rows" id="row27"></div>
+                <div class="rows" id="row28"></div>
+                <div class="rows" id="row29"></div>
+                <div class="rows" id="row30"></div>
+            </div>
+            <div class="columnsFlex" id="column6">
+                <div class="rows" id="row31"></div>
+                <div class="rows" id="row32"></div>
+                <div class="rows" id="row33"></div>
+                <div class="rows" id="row34"></div>
+                <div class="rows" id="row35"></div>
+                <div class="rows" id="row36"></div>
+            </div>
+            <div class="columnsFlex" id="column7">
+                <div class="rows" id="row37"></div>
+                <div class="rows" id="row38"></div>
+                <div class="rows" id="row39"></div>
+                <div class="rows" id="row40"></div>
+                <div class="rows" id="row41"></div>
+                <div class="rows" id="row42"></div>
+            </div>
+        </div> -->
+
+        <script src="main.js"></script>
+    </body>
+</html>
