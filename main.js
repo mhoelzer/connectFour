@@ -1,148 +1,103 @@
-// onclick = drop Red or balck
-//     win condition
-//         alert if one wins
-//     if not return
-// change classname of element 
 let currentPlayer = "red";
 let nextPlayer = "black";
 
-let playerRedSelections = new Array();
-let playerBlackSelections = new Array();
+// // every piece associated with number %10
+// let playerRedSelections = new Array();
+// let playerBlackSelections = new Array();
 
-const handleClick = function(event) {
-    // reference to object that dispatched the event
-    let cell = event.target;
-    cell.innerHTML = currentPlayer;
+let board = [
+    // sorted by rows; hold rep of where on screen
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0]
+]
+// board[row][column] --> start with outer loop is row; inner is column
+
+function createChip(player) {
     let chip = document.createElement("div");
-    if(currentPlayer === "red") {
-        playerSelections = playerRedSelections;
-        chip.classList.add(currentPlayer);
-        cell.appendChild(chip)
-        nextPlayer = "black";
-    } else {
-        playerSelections = playerBlackSelections;
-        chip.classList.add(currentPlayer);
-        cell.appendChild(chip)
-        nextPlayer = "red";
-    };
-    // parses string and return integer of the specified radix; !!!ask what this means!!!
-    playerSelections.push(parseInt(cell.id));
-    // swap players
-    currentPlayer = nextPlayer;
-    // check if bottom cell is blank
-    // if yes, add to bottom
-    // if no, add above highest cell
-    // if no but has 6, return error
-    if(cell.length === 0) {
-        if(column.length === 0) {
-            cell.appendChild(chip);
-        }
-        alert("he")
-    }
-};
-// get array of all cells using doc.querySelectorAll()
-// if want to use tictactoe, do td instead of div.rows
-const cells = document.querySelectorAll("div.rows");
-// iterates through those cells to add event listener
-for(let i = 0; i < cells.length; i++) {
-    cells[i].addEventListener("click", handleClick);
-};
+    // if player is string red form 1, then red is css class
+    chip.classList.add(player, "chip");
+    return chip;
+}
+// createchip("black")
+// columnelmeent is dropchip(payer, event.currentTarget)
+// create elment and put to column and change rep of board
+function dropChip(player, columnElement) {
+    let chip = createChip(player);
+    // dom manip
+    columnElement.appendChild(chip);
+    // needs to be used to see coulmn index wise
+    // colel dataset by colindex for index; stroed as string in html
+    const columnIndex = Number(columnElement.dataset.columnIndex);
+    // have chip added, so subtract 1 to get the index
+    const rowIndex = columnElement.childElementCount - 1;
+    // changes/applies to array; puts w/e chip where it is
+    board[rowIndex][columnIndex] = player;
+}
 
+// check win conditions w/ one player; keep track of player
 
+// eventlandher uses event 
+function handleClick(event) {
+    // col is curT
+    const columnElement = event.currentTarget;
+    if(columnElement.childElementCount >= 6) return;
+    // here is cur pla and what clicked on 
+    dropChip(currentPlayer, columnElement);
+    // checkWinner();
+    switchPlayer();
+}
 
-
-
-
-// let board = document.getElementById("grid")
-// board = [
-//     [0, 3, 4, 1, 0, 0, 0],
-//     [0, 4, 3, 2, 1, 2, 0],
-//     [4, 0, 2, 3, 1, 1, 1],
-//     [0, 2, 2, 0, 3, 0, 1],
-//     [2, 0, 2, 4, 4, 4, 4],
-//     [0, 0, 2, 0, 2, 2, 2]
-// ]
-
-// // If we search past the edge we'll get a null pointer error
-// const edgeX = board[0].length - 3;
-// const edgeY = board.length - 3;
-// console.log(edgeX, edgeY);
-// // HORIZONTAL for vert search
-// // iterate each row
-// for (let y = 0; y < board.length; y++) {
-//     // iterate each cell in the row
-//     for (let x = 0; x < edgeX; x++) {
-//         let cell = board[y][x];
-//         // Only check if cell is filled
-//         if (cell !== 0) {
-//             // Check the next two cells for the same value
-//             if (cell === board[y][x + 1] && cell === board[y][x + 3]) {
-//                 console.log("3 in a row vertical found at " + (x + 1) + ":" + (y + 1))
+// // to check the winner, you need to check horiz, vert, diag to R and diga to L; THEN  
+// function checkWinner() {
+//     checkWinnerHorizontally();
+//     checkWinnerVertically();
+//     checkWinnerDiagonalToRight();
+//     checkWinnerDiagonalToLeft();
+// }
+// function checkWinnerHorizontally() {
+//     for (let rowIndex = 0; rowIndex < board.length; rowIndex++) {
+//         let row = board[rowIndex];
+//         for (let columnIndex = 0; columnIndex < columnIndex.childElementCount; columnIndex++) {
+//             let chipIsHere = row[columnIndex];
+//             if (chipIsHere !== 0) {
+//                 if (chipIsHere === board[rowIndex][columnIndex + 1] && chipIsHere === board[rowIndex][columnIndex + 2] && chipIsHere === board[rowIndex][columnIndex + 3]) {
+//                     winningMessage();
+//                 }
 //             }
 //         }
 //     }
 // }
-// // VERTICAL
-// // iterate each row   
-// for (let y = 0; y < edgeY; y++) {
-//     // iterate each cell in the row
-//     for (let x = 0; x < board[0].length; x++) {
-//         cell = board[y][x];
-//         // Only check if cell is filled
-//         if (cell !== 0) {
-//             // Check the next two cells for the same value
-//             if (cell === board[y + 1][x] && cell === board[y + 3][x]) {
-//                 console.log("3 in a row horizontal found at " + (x + 1) + ":" + (y + 1))
-//             }
-//         }
-//     }
-// }
-// // DIAGONAL (DOWN RIGHT)
-// // iterate each row   
-// for (let y = 0; y < edgeY; y++) {
-//     // iterate each cell in the row
-//     for (let x = 0; x < edgeX; x++) {
-//         cell = board[y][x];
-//         // Only check if cell is filled
-//         if (cell !== 0) {
-//             // Check the next two cells for the same value
-//             if (cell === board[y + 1][x + 1] && cell === board[y + 3][x + 3]) {
-//                 console.log("3 in a row down-right found at " + (x + 1) + ":" + (y + 1))
-//             }
-//         }
-//     }
-// }
-// // DIAGONAL (DOWN LEFT)
-// // iterate each row   
-// for (let y = 2; y < board.length; y++) {
-//     // iterate each cell in the row
-//     for (let x = 0; x < edgeX; x++) {
-//         cell = board[y][x];
-//         // Only check if cell is filled
-//         if (cell !== 0) {
-//             // Check the next two cells for the same value
-//             if (cell === board[y - 1][x + 1] && cell === board[y - 3][x + 3]) {
-//                 console.log("3 in a row down-left found at " + (x + 1) + ":" + (y + 1))
-//             }
-//         }
-//     }
-// }
+// function checkWinnerVertically() {
 
+// }
+// function checkWinnerDiagonalToRight() {
 
-// handleClick = function(event) {
-//     // reference to object that dispatched the event
-//     let cell = event.target;
-//     cell.innerHTML = currentPlayer;
-//     if(currentPlayer == "Red") {
-//         playerSelections = playerRedSelections;
-//         nextPlayer = "Black";
+// }
+// function checkWinnerDiagonalToLeft() {
+
+// }
+// function winningMessage() {
+//     let messageForWinner = document.createElement("h1");
+//     messageForWinner.textContent = currentPlayer + " is the champion";
+//     if(currentPlayer == "red") {
+//         document.body.appendChild(messageForWinner).style.color = "red";
 //     } else {
-//         playerSelections = playerBlackSelections;
-//         nextPlayer = "Red";
-//     };
-//     // parses string and return integer of the specified radix; !!!ask what this means!!!
-//     playerSelections.push(parseInt(cell.id));
-//     // swap players
-//     currentPlayer = nextPlayer;
-//     console.log(currentPlayer)
-// };
+//         document.body.appendChild(messageForWinner).style.color = "black";
+//     }
+// }
+
+function switchPlayer() {
+    if(currentPlayer === "red") {
+        currentPlayer = "black";
+    } else {
+        currentPlayer = "red";
+    };
+};
+
+for(let column of document.getElementsByClassName("columns")) {
+    column.onclick = handleClick;
+}

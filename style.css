@@ -1,51 +1,22 @@
-#grid {
+#wrapper {
     display: flex;
     justify-content: center;
 }
-.columns, .rows {
+.columns {
     display: flex;
     flex-direction: column-reverse;
     align-items: center;
-}
-.rows {
     width: 100px;
-    height: 100px;
+    height: 660px;
+    padding-left: 5px;
+    padding-right: 5px;
     border: 2px solid green;
 }
 
-
-table {
-    display: flex;
-    justify-content: center;
-}
-td {
-    /* align-items: center; */
-    border: 2px solid lime;
+.chip {
     width: 100px;
     height: 100px;
-}
-td:hover {
-    background: orange;
-}
-
-
-/* #flexbox {
-    display: flex;
-    justify-content: center;
-}
-.columnsFlex {
-    height: 80px;
-    width: 80px;
-    margin: 15px;
-    display: flex;
-    flex-direction: column-reverse;
-    align-items: center;
-} */
-
-
-.red, .black {
-    width: 80px;
-    height: 80px;
+    margin: 5px;
     border-radius: 50%;
 }
 .red {
