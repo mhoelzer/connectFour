@@ -1,3 +1,8 @@
+h1 {
+    display: flex;
+    justify-content: center;
+}
+
 #wrapper {
     display: flex;
     justify-content: center;
