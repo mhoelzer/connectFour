@@ -52,9 +52,11 @@ function handleClick(event) {
     checkWinner();
     switchPlayer();
 }
+for(let column of document.getElementsByClassName("columns")) {
+    // column.onclick = handleClick;
+    column.addEventListener("click", handleClick);
+}
 
-// to check the winner, you need to check horiz, vert, diag to R and diga to L; THEN  
-// make handleclick stop when done with checkwinnre
 function checkWinner() {
     checkWinnerHorizontally();
     checkWinnerVertically();
@@ -113,15 +115,23 @@ function checkWinnerDiagonalToLeft() {
         }
     }
 }
+const winningMessageHere = document.getElementById("wrapper");
 function winningMessage() {
     let messageForWinner = document.createElement("h1");
     messageForWinner.textContent = currentPlayer + " is the champion";
+    messageForWinner.classList.add("test")
     if(currentPlayer == "red") {
-        document.body.appendChild(messageForWinner).style.color = "red";
+        winningMessageHere.appendChild(messageForWinner).style.color = "red";
+        winningMessageHere.appendChild(messageForWinner).style.webkitTextStroke=".5px black";
     } else {
-        document.body.appendChild(messageForWinner).style.color = "black";
+        winningMessageHere.appendChild(messageForWinner).style.color = "black";
     }
-    
+    removeHandleClickFunction()
+}
+function removeHandleClickFunction() {
+    for (let column of document.getElementsByClassName("columns")) {
+        column.removeEventListener("click", handleClick);
+    }
 }
 
 function switchPlayer() {
@@ -132,6 +142,6 @@ function switchPlayer() {
     };
 };
 
-for(let column of document.getElementsByClassName("columns")) {
-    column.onclick = handleClick;
+function resetBoardToEmpty() {
+    location.reload();
 }

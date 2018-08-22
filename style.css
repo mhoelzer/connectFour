@@ -1,3 +1,7 @@
+body {
+    overflow: hidden;
+}
+
 h1 {
     display: flex;
     justify-content: center;
@@ -17,6 +21,22 @@ h1 {
     padding-right: 5px;
     border: 2px solid green;
 }
+.test {
+    display: flex;
+    align-items: center;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+    font-size: 50px;
+    background-image:
+    radial-gradient(
+      rgb(35,53,146,1),
+      transparent,
+      transparent
+);
+}
 
 .chip {
     width: 100px;
@@ -29,4 +49,9 @@ h1 {
 }
 .black {
     background-color: black;
+}
+
+button#resetBoardToEmpty {
+    justify-content: center;
+    align-items: center;
 }
