@@ -30,7 +30,8 @@ h1 {
     bottom: 0;
     position: fixed;
     font-size: 50px;
-    background-image: radial-gradient(rgba(0, 255, 179, 0.562), transparent, transparent);
+    /* background-image: radial-gradient(rgba(0, 255, 179, 0.562), transparent, transparent); */
+    background: url(./pics/franceLoop.gif) no-repeat center center fixed; 
 }
 
 .chip {
@@ -38,6 +39,11 @@ h1 {
     height: 80px;
     margin: 10px;
     border-radius: 50%;
+    animation-name: fall-animation;
+    animation-duration: 800ms;
+}
+@keyframes fall-animation {
+    from {transform: translateY(-600px)} to {transform: translateY(0)}
 }
 .red {
     background-color: red;

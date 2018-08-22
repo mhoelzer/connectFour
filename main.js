@@ -46,13 +46,13 @@ function dropChip(player, columnElement) {
 function handleClick(event) {
     // col is curT
     const columnElement = event.currentTarget;
-    if(columnElement.childElementCount >= 6) return;
+    if (columnElement.childElementCount >= 6) return;
     // here is cur pla and what clicked on 
     dropChip(currentPlayer, columnElement);
     checkWinner();
     switchPlayer();
 }
-for(let column of document.getElementsByClassName("columns")) {
+for (let column of document.getElementsByClassName("columns")) {
     // column.onclick = handleClick;
     column.addEventListener("click", handleClick);
 }
@@ -68,7 +68,7 @@ function checkWinnerHorizontally() {
         let row = board[rowIndex];
         for (let columnIndex = 0; columnIndex < rowIndexBoundary; columnIndex++) {
             let chipIsHere = row[columnIndex];
-            if(chipIsHere != 0) {
+            if (chipIsHere != 0) {
                 if (chipIsHere === board[rowIndex][columnIndex + 1] && chipIsHere === board[rowIndex][columnIndex + 2] && chipIsHere === board[rowIndex][columnIndex + 3]) {
                     winningMessage();
                 }
@@ -81,7 +81,7 @@ function checkWinnerVertically() {
         let row = board[rowIndex];
         for (let columnIndex = 0; columnIndex < board.length; columnIndex++) {
             let chipIsHere = row[columnIndex];
-            if(chipIsHere != 0) {
+            if (chipIsHere != 0) {
                 if (chipIsHere === board[rowIndex + 1][columnIndex] && chipIsHere === board[rowIndex + 2][columnIndex] && chipIsHere === board[rowIndex + 3][columnIndex]) {
                     winningMessage();
                 }
@@ -94,7 +94,7 @@ function checkWinnerDiagonalToRight() {
         let row = board[rowIndex];
         for (let columnIndex = 0; columnIndex < rowIndexBoundary; columnIndex++) {
             let chipIsHere = row[columnIndex];
-            if(chipIsHere != 0) {
+            if (chipIsHere != 0) {
                 if (chipIsHere === board[rowIndex + 1][columnIndex + 1] && chipIsHere === board[rowIndex + 2][columnIndex + 2] && chipIsHere === board[rowIndex + 3][columnIndex + 3]) {
                     winningMessage();
                 }
@@ -107,7 +107,7 @@ function checkWinnerDiagonalToLeft() {
         let row = board[rowIndex];
         for (let columnIndex = 0; columnIndex < rowIndexBoundary; columnIndex++) {
             let chipIsHere = row[columnIndex];
-            if(chipIsHere != 0) {
+            if (chipIsHere != 0) {
                 if (chipIsHere === board[rowIndex - 1][columnIndex + 1] && chipIsHere === board[rowIndex - 2][columnIndex + 2] && chipIsHere === board[rowIndex - 3][columnIndex + 3]) {
                     winningMessage();
                 }
@@ -118,11 +118,11 @@ function checkWinnerDiagonalToLeft() {
 const winningMessageHere = document.getElementById("wrapper");
 function winningMessage() {
     let messageForWinner = document.createElement("h1");
-    messageForWinner.textContent = currentPlayer + " is the champion";
-    messageForWinner.classList.add("messageStyleForBothRedAndBlack")
-    if(currentPlayer == "red") {
+    messageForWinner.textContent = currentPlayer.toUpperCase() + " IS THE VICTOR!";
+    messageForWinner.classList.add("messageStyleForBothRedAndBlack");
+    if (currentPlayer == "red") {
         winningMessageHere.appendChild(messageForWinner).style.color = "red";
-        winningMessageHere.appendChild(messageForWinner).style.webkitTextStroke=".5px black";
+        winningMessageHere.appendChild(messageForWinner).style.webkitTextStroke = "1px black";
     } else {
         winningMessageHere.appendChild(messageForWinner).style.color = "black";
     }
@@ -135,7 +135,7 @@ function removeHandleClickFunction() {
 }
 
 function switchPlayer() {
-    if(currentPlayer === "red") {
+    if (currentPlayer === "red") {
         currentPlayer = "black";
     } else {
         currentPlayer = "red";
