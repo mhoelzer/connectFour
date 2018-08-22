@@ -119,7 +119,7 @@ const winningMessageHere = document.getElementById("wrapper");
 function winningMessage() {
     let messageForWinner = document.createElement("h1");
     messageForWinner.textContent = currentPlayer + " is the champion";
-    messageForWinner.classList.add("test")
+    messageForWinner.classList.add("messageStyleForBothRedAndBlack")
     if(currentPlayer == "red") {
         winningMessageHere.appendChild(messageForWinner).style.color = "red";
         winningMessageHere.appendChild(messageForWinner).style.webkitTextStroke=".5px black";
