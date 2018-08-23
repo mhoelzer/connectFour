@@ -122,9 +122,10 @@ function winningMessage() {
     messageForWinner.classList.add("messageStyleForBothRedAndBlack");
     if (currentPlayer == "red") {
         winningMessageHere.appendChild(messageForWinner).style.color = "red";
-        winningMessageHere.appendChild(messageForWinner).style.webkitTextStroke = "1px black";
+        winningMessageHere.appendChild(messageForWinner).style.webkitTextStroke = "1px white";
     } else {
         winningMessageHere.appendChild(messageForWinner).style.color = "black";
+        winningMessageHere.appendChild(messageForWinner).style.webkitTextStroke = "1px white";
     }
     removeHandleClickFunction()
 }
