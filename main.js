@@ -120,12 +120,16 @@ function winningMessage() {
     let messageForWinner = document.createElement("h1");
     messageForWinner.textContent = currentPlayer.toUpperCase() + " IS THE VICTOR!";
     messageForWinner.classList.add("messageStyleForBothRedAndBlack");
+    const redMusic = new Audio('./pics/redMerged20DecibelsLouder.mp3');
+    const blackMusic = new Audio('./pics/blackMerged20DecibelsLouder.mp3');
     if (currentPlayer == "red") {
         winningMessageHere.appendChild(messageForWinner).style.color = "red";
         winningMessageHere.appendChild(messageForWinner).style.webkitTextStroke = "1px white";
+        redMusic.play();
     } else {
         winningMessageHere.appendChild(messageForWinner).style.color = "black";
         winningMessageHere.appendChild(messageForWinner).style.webkitTextStroke = "1px white";
+        blackMusic.play();
     }
     removeHandleClickFunction()
 }
