@@ -1,12 +1,14 @@
 :root {
-    --font:"Goblin One", cursive, Georgia;
-    --boardBlue: #3c50c4;
+    --globalFont:"Goblin One", cursive, Georgia;
+    --boardBlue: #3c50c4; /* or #3B76EB */
 }
+
 body {
     background: url(./pics/eiffel.jpg) no-repeat center center fixed; 
     /* http://monovisions.com/paris-france-late-19th-century-historic-bw-photos/ */
     background-size: cover;
-    font-family: var(--font);
+    font-family: var(--globalFont);
+    overflow: hidden;
 }
 
 h1 {
@@ -16,6 +18,7 @@ h1 {
     -webkit-text-stroke: .5px white;
     font-size: 38px;
 }
+
 
 #wrapper {
     display: flex;
@@ -27,7 +30,6 @@ h1 {
     align-items: center;
     width: 100px;
     height: 600px;
-    /* or color: 3B76EB */
     background-image: radial-gradient(circle , rgba(255, 255, 255, .1), rgba(255, 255, 255, .5), var(--boardBlue) 100%);
     border: 4px solid var(--boardBlue);
     background-size: 100px 100px;
@@ -41,9 +43,9 @@ h1 {
     bottom: 0;
     position: fixed;
     font-size: 50px;
-    /* background-image: radial-gradient(rgba(0, 255, 179, 0.562), transparent, transparent); */
-    background: url(./pics/franceLoop.gif) no-repeat center center fixed; 
+    background: url(./pics/franceLoop.gif) no-repeat center center fixed;
 }
+
 
 .chip {
     width: 80px;
@@ -56,9 +58,6 @@ h1 {
     background-repeat: no-repeat;
     background-position: 50% 70%;
 }
-@keyframes fall-animation {
-    from {transform: translateY(-600px)} to {transform: translateY(0)}
-}
 .red {
     background-color: red;
     background-image: url(./pics/redMacaron.png);
@@ -67,6 +66,10 @@ h1 {
     background-color: black;
     background-image: url(./pics/blackMacaron.png);
 }
+@keyframes fall-animation {
+    from {transform: translateY(-600px)} to {transform: translateY(0)}
+}
+
 
 #buttonHolder {
     display: flex;
@@ -82,7 +85,7 @@ button#resetBoardToEmpty {
     background-position: 45% 53%;
     width: 275px;
     height: 100px;
-    font-family: var(--font);
+    font-family: var(--globalFont);
     font-size: 20px;
     -webkit-text-stroke: 1px var(--boardBlue);
     color: wheat;

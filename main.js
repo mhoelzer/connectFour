@@ -1,10 +1,5 @@
 let currentPlayer = "red";
 let nextPlayer = "black";
-
-// // every piece associated with number %10
-// let playerRedSelections = new Array();
-// let playerBlackSelections = new Array();
-
 let board = [
     // sorted by rows; hold rep of where on screen
     [0, 0, 0, 0, 0, 0, 0],
@@ -14,17 +9,16 @@ let board = [
     [0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0]
 ]
+// board[row][column] --> start with outer loop is row; inner is column
 let columnIndexBoundary = board.length - 3;
 let rowIndexBoundary = board[0].length - 3;
-// board[row][column] --> start with outer loop is row; inner is column
+
 
 function createChip(player) {
     let chip = document.createElement("div");
-    // if player is string red form 1, then red is css class
     chip.classList.add(player, "chip");
     return chip;
 }
-// createchip("black")
 // columnelmeent is dropchip(payer, event.currentTarget)
 // create elment and put to column and change rep of board
 function dropChip(player, columnElement) {
@@ -40,11 +34,8 @@ function dropChip(player, columnElement) {
     board[rowIndex][columnIndex] = player;
 }
 
-// check win conditions w/ one player; keep track of player
-
 // eventlandher uses event 
 function handleClick(event) {
-    // col is curT
     const columnElement = event.currentTarget;
     if (columnElement.childElementCount >= 6) return;
     // here is cur pla and what clicked on 
@@ -53,7 +44,6 @@ function handleClick(event) {
     switchPlayer();
 }
 for (let column of document.getElementsByClassName("columns")) {
-    // column.onclick = handleClick;
     column.addEventListener("click", handleClick);
 }
 
@@ -120,15 +110,16 @@ function winningMessage() {
     let messageForWinner = document.createElement("h1");
     messageForWinner.textContent = currentPlayer.toUpperCase() + " IS THE VICTOR!";
     messageForWinner.classList.add("messageStyleForBothRedAndBlack");
+    const winningMessageStyling = winningMessageHere.appendChild(messageForWinner).style
     const redMusic = new Audio('./pics/redMerged20DecibelsLouder.mp3');
     const blackMusic = new Audio('./pics/blackMerged20DecibelsLouder.mp3');
     if (currentPlayer == "red") {
-        winningMessageHere.appendChild(messageForWinner).style.color = "red";
-        winningMessageHere.appendChild(messageForWinner).style.webkitTextStroke = "1px white";
+        winningMessageStyling.color = "red";
+        winningMessageStyling.webkitTextStroke = "1px white";
         redMusic.play();
     } else {
-        winningMessageHere.appendChild(messageForWinner).style.color = "black";
-        winningMessageHere.appendChild(messageForWinner).style.webkitTextStroke = "1px white";
+        winningMessageStyling.color = "black";
+        winningMessageStyling.webkitTextStroke = "1px white";
         blackMusic.play();
     }
     removeHandleClickFunction()
@@ -146,6 +137,7 @@ function switchPlayer() {
         currentPlayer = "red";
     };
 };
+
 
 function resetBoardToEmpty() {
     location.reload();
