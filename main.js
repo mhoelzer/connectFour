@@ -1,3 +1,5 @@
+//do stuuff for tie. maybe if board = !0.... for LL 0s then print tie
+
 let currentPlayer = "red";
 let nextPlayer = "black";
 let board = [
