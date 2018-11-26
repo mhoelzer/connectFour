@@ -54,6 +54,7 @@ function checkWinner() {
     checkWinnerVertically();
     checkWinnerDiagonalToRight();
     checkWinnerDiagonalToLeft();
+    checkWinnerTie();
 }
 function checkWinnerHorizontally() {
     for (let rowIndex = 0; rowIndex < board.length; rowIndex++) {
@@ -107,24 +108,45 @@ function checkWinnerDiagonalToLeft() {
         }
     }
 }
+function checkWinnerTie() {
+    let isATie = true
+    for (let rowIndex = 0; rowIndex < board.length; rowIndex++) {
+        for (let columnIndex = 0; columnIndex < 6; columnIndex++) {
+            if (board[rowIndex][columnIndex] == "0") {
+                isATie = false
+            }
+        }
+    }
+    if (isATie == true) {
+        tieingMessage();
+    }
+}
+
 const winningMessageHere = document.getElementById("wrapper");
 function winningMessage() {
     let messageForWinner = document.createElement("h1");
-    messageForWinner.textContent = currentPlayer.toUpperCase() + " IS THE VICTOR!";
+    messageForWinner.textContent = `${currentPlayer.toUpperCase()} IS THE VICTOR!`;
     messageForWinner.classList.add("messageStyleForBothRedAndBlack");
-    const winningMessageStyling = winningMessageHere.appendChild(messageForWinner).style
+    const winningMessageStyling = winningMessageHere.appendChild(messageForWinner).style;
+    winningMessageStyling.webkitTextStroke = "1px white";
     const redMusic = new Audio('./pics/redMerged20DecibelsLouder.mp3');
     const blackMusic = new Audio('./pics/blackMerged20DecibelsLouder.mp3');
     if (currentPlayer == "red") {
         winningMessageStyling.color = "red";
-        winningMessageStyling.webkitTextStroke = "1px white";
         redMusic.play();
     } else {
         winningMessageStyling.color = "black";
-        winningMessageStyling.webkitTextStroke = "1px white";
         blackMusic.play();
     }
     removeHandleClickFunction()
+}
+function tieingMessage() {
+    let messageForWinner = document.createElement("h1");
+    messageForWinner.textContent = "NO ONE IS THE VICTOR :(";
+    messageForWinner.classList.add("messageStyleForBothRedAndBlack");
+    const winningMessageStyling = winningMessageHere.appendChild(messageForWinner).style;
+    winningMessageStyling.color = "#460000";
+    winningMessageStyling.webkitTextStroke = "1px white";
 }
 function removeHandleClickFunction() {
     for (let column of document.getElementsByClassName("columns")) {
@@ -137,9 +159,8 @@ function switchPlayer() {
         currentPlayer = "black";
     } else {
         currentPlayer = "red";
-    };
-};
-
+    }
+}
 
 function resetBoardToEmpty() {
     location.reload();
